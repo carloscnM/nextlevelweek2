@@ -46,6 +46,7 @@ export const MainContent = styled.main`
         transition: color 0.2s;
     }
 
+    
     fieldset legend button:hover{
         color: var(--color-primary-darker);
     }
@@ -70,6 +71,7 @@ export const MainContent = styled.main`
         color: var(--color-text-complement);
         margin-bottom: 2rem;
     }
+
 
     footer p img {
         margin-right: 2rem;

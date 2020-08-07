@@ -1,5 +1,7 @@
 import React, {useState, FormEvent} from 'react'
 
+import {useHistory} from 'react-router-dom';
+
 import TopMenu from '../../Components/TopMenu';
 import Input from '../../Components/Input';
 import Textarea from '../../Components/Textarea';
@@ -9,10 +11,14 @@ import { Container, MainContent } from './styles';
 import { Button } from '../../Components/Button';
 
 import warningIcon from '../../assets/images/icons/warning.svg';
+import okIcon from '../../assets/images/icons/icons8-ok.svg';
 
 import { IScheduleItem, IUser, ILesson } from './interfaces';
 import useForm from '../../hooks/useForm';
 import api from '../../services/api';
+import { Loader } from '../../Components/Loader';
+import { setInterval } from 'timers';
+
 
 
 function TeacherForm() {
@@ -26,11 +32,16 @@ function TeacherForm() {
     const lessonDefault: ILesson = {subject: '-1', price: 0.0};
     const lessonFormData = useForm<ILesson>(lessonDefault);
 
+    const [successSubmit, setSuccessSubmit] = useState<boolean>(false);
+    const [loaderActive, setLoaderActive] = useState<boolean>(false);
 
+    const history = useHistory();
 
     function handlerAddNewScheduleItem(){
         setScheduleItems([...scheduleItems, scheduleItemDefault]);
     }
+
+    
 
     function setScheduleItemValue(position: number, field: string, value:string){
         const updateScheduleItems = scheduleItems.map((scheduleItem, indice) => {
@@ -46,9 +57,14 @@ function TeacherForm() {
     }
 
 
-    function handlerSubmitCreateNewLesson(event: FormEvent){
+    function sleep(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function handlerSubmitCreateNewLesson(event: FormEvent){
         event.preventDefault();
         
+        setLoaderActive(true);
         const data = {
             name: UserFormData.FormData.name,
             avatar: UserFormData.FormData.avatar,
@@ -60,9 +76,14 @@ function TeacherForm() {
         }
         
         api.post('lessons',data)
-            .then((response) => {
+            .then(async function(response) {
+                
                 if(response.status === 201){
-                    alert('Cadastro realizado com sucesso');
+                    setSuccessSubmit(true);
+                    await sleep(1000);
+                    setLoaderActive(false);
+                    await sleep(1000);
+                    history.push('/')
                 }
             })
             .catch((err) => console.log(err.message));    
@@ -156,17 +177,27 @@ function TeacherForm() {
                             </div>
                         ))}
                     </fieldset>
-
-                    <footer>
+                        {loaderActive && (<Loader />)}                 
+                    <footer>  
                         <p>
                             <img src={warningIcon} alt="Aviso importante" />
                             Importante! <br/>
                             Preencha todos os dados
                         </p>
 
-                        <Button type="submit" backgroundColor="var(--color-secondary)">
-                            Salvar Cadastro 
-                        </Button>    
+                         {!successSubmit ? (
+                            <Button type="submit" backgroundColor="var(--color-secondary)">
+                                Cadastrar
+                            </Button>  
+                            ):
+                            (
+                                <p>
+                                    <img src={okIcon} alt="Ok"/>
+                                    Cadastro realizado!    
+                                </p>
+                            )
+                        }           
+                        
                     </footer>
                 </form>
             </MainContent>
