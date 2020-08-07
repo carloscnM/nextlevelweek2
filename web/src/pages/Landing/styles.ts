@@ -83,6 +83,7 @@ export const ButtonsContainer = styled.div`
     }
 
     @media(min-width: 1100px){
+        max-width: 660px;
         grid-area: buttons;
         justify-content: flex-start;
         padding: 3rem 0;

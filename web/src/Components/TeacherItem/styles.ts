@@ -59,13 +59,14 @@ export const Item = styled.article`
         display: block;
     }
 
-    footer button {
+    footer button, a {
         width: 20rem;
         height: 5.6rem;
         background-color: var(--color-secondary);
         color: var(--color-button-text);
         border: 0;
         border-radius: 0.8rem;
+        text-decoration: none;
         cursor: pointer;
         font-weight: 700;
         font-size: 1.4rem;
@@ -89,13 +90,13 @@ export const Item = styled.article`
                 margin-left: 1.6rem;
             }
 
-            footer button{
+            footer button, a{
                 width: 24.5rem;
                 font-size: 1.6rem;
                 justify-content: center;
             }
 
-            footer button img{
+            footer button, a img{
                 margin-right: 1.6rem;
             }
         }

@@ -7,9 +7,10 @@ import logoImg from '../../assets/images/logo.svg';
 
 interface Props {
     titlePage: string;
+    description?: string;
 }
 
-const TopMenu: React.FC<Props> = ({titlePage, children}) => {
+const TopMenu: React.FC<Props> = ({titlePage,description,children}) => {
     return(
         <Header>
             <div className="top-bar">
@@ -20,6 +21,7 @@ const TopMenu: React.FC<Props> = ({titlePage, children}) => {
             </div>
             <div className="header-content">
                 <strong>{titlePage}</strong>
+                    {description && <p>{description}</p>}
                 {children}
             </div>    
 

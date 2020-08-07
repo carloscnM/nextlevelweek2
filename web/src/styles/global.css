@@ -2,9 +2,9 @@
     --color-background: #F0F0F7;
     --color-primary-lighter: #77A8AE;
     --color-primary-light: #5a947e;
-    --color-primary: #3F4D19;
-    --color-primary-dark: #333E14;
-    --color-primary-darker: #272E0F;
+    --color-primary: #41415d;
+    --color-primary-dark: #212133;
+    --color-primary-darker: #1a1a29;
     --color-secondary: #535DCA;
     --color-secondary-dark: #3943B7;
     --color-title-in-primary: #FFFFFF;
@@ -17,6 +17,7 @@
     --color-button-text: #FFFFFF;
     --color-box-base: #FFFFFF;
     --color-box-footer: #FAFAFC;
+    --color-text-notification: #f29d9d;
   
     font-size: 60%;
 }

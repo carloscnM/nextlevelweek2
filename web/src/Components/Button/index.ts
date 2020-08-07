@@ -10,10 +10,12 @@ interface PropsButton {
   //${(props) => props.backgroundImage}
 
 export const Button = styled.button<PropsButton>`
+    width: 100%;
     border-radius: 0.8rem;
     padding: 1.4rem;
     margin-right: 1.6rem;
-    font: 700 2.0rem Archivo;
+    font-weight: 700;
+    font-size: 1.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +24,7 @@ export const Button = styled.button<PropsButton>`
     background-color: ${(props) => ( props.backgroundColor ? props.backgroundColor : "none")};
 
     transition: background-color 0.2s;
-
+    
     img{
         width: 4rem;
         margin-right: 2.4rem;

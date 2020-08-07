@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const SearchForm = styled.form`
     margin-top: 3.2rem;
-
+   
     label{
         color: var(--color-text-in-primary);
     }
@@ -39,7 +39,8 @@ export const SearchForm = styled.form`
         outline:0;
         padding: 0 1.6rem;
         font-size: 1.6rem;
-
+        align-self: center;
+        justify-self: center;
     }
 
     .input-block:focus-within::after{
@@ -53,17 +54,49 @@ export const SearchForm = styled.form`
         bottom: 0;
     }
 
+    button {
+        height: 5.6rem;
+        width: 5.6rem;
+        border-radius: 45%;
+        outline: hidden;
+        border: 0;
+        text-decoration: none;
+        float: right;
+        cursor: point;
+        padding: 0.4rem;
+        margin-top: 1rem;
+        transition: background 0.2s;
+    }
+
+    button:hover{
+        background: var(--color-text-in-primary);
+    }
+
+    button img{
+        height: 100%;
+        width: 100%;
+    }
+
     @media (min-width: 700px){
         &{
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 2fr 2fr 2fr 1fr;
             column-gap: 16px;
             position: absolute;
             bottom: -30px;
+            justify-content: center;
 
             .input-block + .input-block {
                 margin-top: 0;
             }
+
+            button{
+                display: flex;
+                align-self: center;
+                justify-self: center;
+                margin-top: 2rem;
+            }
+
         }
     }
 `;
@@ -72,10 +105,23 @@ export const MainContent = styled.main`
     margin: 3.2rem auto;
     width: 90%;
 
+
+    h2 {
+        margin-top: 2rem;
+        font-weight: 700;
+        font-size: 2rem;
+        text-align: center;
+        color: var(--color-text-notification)
+    }
+
     @media (min-width: 700px){
-    &{
-        padding: 3.2rem 0;
-        max-width: 740px;
-        margin: 0 auto;
+        &{
+            h2{
+                max-width: 80%;
+            }
+            padding: 3.2rem 0;
+            max-width: 740px;
+            margin: 0 auto;
+        }
     }
 `;

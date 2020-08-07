@@ -40,11 +40,20 @@ export const Header = styled.header`
             line-height: 4.2rem;
             color: var(--color-title-in-primary);
         }
+
+        p{
+            max-width: 40rem;
+            font-size: 1.6rem;
+            line-height: 2rem;
+            color: var(--color-text-in-primary);
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
     }
 
     @media (min-width: 700px){
         &{
-            height: 220px;
+            height: 240px;
 
             .top-bar{
                 max-width: 1100px;

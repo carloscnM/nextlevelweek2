@@ -3,42 +3,42 @@ import React from 'react';
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 import { Item } from './styles';
 
+import {ITeachersLesson} from './interfaces';
+
 //schoolSubject - Máteria escolar;
 
 interface PropsTeacherItem{
-    
+    teacher: ITeachersLesson;
 }
 
-const TeacherItem : React.FC<PropsTeacherItem> = (props) => {
+const TeacherItem : React.FC<PropsTeacherItem> = ({teacher}) => {
 
 
     return (
         <Item>
             <header>
                 <img 
-                    src="https://avatars3.githubusercontent.com/u/32484259?s=460&u=653f0364d24e0177964dab81fc104a34f70127b3&v=4" 
+                    src={teacher.user.urlAvatar} 
                     alt="Avatar"
                 />
                 <div>
-                    <strong>Carlos Mario</strong>
-                    <span>Matemática</span>
+                    <strong>{teacher.user.name}</strong>
+                    <span>{teacher.subject}</span>
                 </div>
             </header>
             <p>
-                Um texto qualquer, depois será carregado do back.
-                <br/> <br/>
-                Um outro texto qualquer, que depois também será carregado do backEnd da aplicação que estamos usando.
+                {teacher.user.bio}
             </p>
 
             <footer>
                 <p>
                     Preço/Hora
-                    <strong>R$ 20,00</strong>
+                    <strong>R$ {teacher.cost}</strong>
                 </p>
-                <button type="button">
+                <a href={`https://wa.me/55${teacher.user.whatsapp}`} target="_blank" type="button">
                     <img src={whatsappIcon} alt="Whatsapp" />
-                    Entrar em Contato
-                </button>
+                    Entrar em contato
+                </a>
             </footer>
         </Item>
     )
