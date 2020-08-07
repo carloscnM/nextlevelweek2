@@ -34,7 +34,7 @@ namespace backend.src.Controllers
 
             int timeInMinutes = HourUtils.HourToMinute(time);
             
-            var Lessons = from lesson in _context.Lessons.Include(l => l.User).Include(l => l.LessonSchedules)
+            var Lessons = from lesson in _context.Lessons.Include(l => l.User)
                             join lessonSchedule in _context.LessonSchedules
                                 on lesson.Id equals lessonSchedule.LessonId
                             join user in _context.Users
